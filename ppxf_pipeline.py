@@ -4,12 +4,14 @@ from astropy.table import Table
 from multiprocessing import freeze_support
 from datetime import datetime
 import results_cat
+import plotting
 
 run_analysis = False
-create_cat = True
+create_cat = False
+sort_plots = True
 
 catalogue_path = "/Users/katherineormerod/Documents/LJMU/WIDE/catalogues/EGS_GOODSN_UDS_combined.fits"
-data_path = "/Users/katherineormerod/Documents/LJMU/WIDE/nirspecxf_heii"
+data_path = "/Users/katherineormerod/Documents/LJMU/WIDE/nirspecxf_heii/"
 output_path = "/Users/katherineormerod/Documents/LJMU/WIDE/catalogues/EGS_GOODSN_UDS_combined_nirspecxf_heii_3sig.fits"
 
 
@@ -43,5 +45,9 @@ if run_analysis:
 if create_cat:
     df = results_cat.results_table(catalogue_path, data_path, output_path)
     # res_cat.results_table(catalogue_path, data_path, output_path)
+
+if sort_plots:
+    plotting.sort(data_path)
+
 
 
